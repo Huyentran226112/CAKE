@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Models\ProductController;
 
@@ -18,6 +19,6 @@ Route::get('/', function () {
     return view('admin.include.content');
 });
 
-Route::resource('categories', 'UserController');
+Route::resource('categories', CategoryController::class);
 Route::resource('product',ProductController::class);
 
