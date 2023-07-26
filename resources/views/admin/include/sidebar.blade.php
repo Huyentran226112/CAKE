@@ -10,7 +10,7 @@
                 <!-- Category -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-list-alt"></i>Category</a>
+                        aria-expanded="false"><i class="menu-icon fa fa-list-alt"></i>QUẢN LÍ THỂ LOẠI </a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-tasks"></i><a href="">Category</a></li>
                         <li><i class="fa fa-trash-o"></i><a href="">Trash</a></li>
@@ -26,7 +26,7 @@
                         <li><i class="fa fa-trash-o"></i><a href="">Trash</a></li>
                     </ul>
                 </li>
-                
+
                 <!-- Customer -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
