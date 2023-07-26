@@ -19,7 +19,8 @@ class OrderFactory extends Factory
         return [
             'customer_id' => fake()->numberBetween($min = 1, $max = 10),
             'date_ship' => fake()->date(),
-            'description' => fake()->sentence(),
+            'note' => fake()->sentence(),
+            'total' => 1000000,
             'created_at' => fake()->date(),
         ];
     }
