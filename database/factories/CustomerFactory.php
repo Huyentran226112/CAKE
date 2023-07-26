@@ -23,7 +23,6 @@ class CustomerFactory extends Factory
             'address' => fake()->address(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->unique->phonenumber(),
-            'gender' => fake()->numberBetween($min = 0, $max = 2),
             'password' => bcrypt('123456'),
             'created_at' => fake()->date(),
         ];

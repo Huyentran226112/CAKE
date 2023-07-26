@@ -16,8 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->bigInteger('quantity');
-            $table->text('total')->nullable();
-            $table->softDeletes();
+            $table->text('total');
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');

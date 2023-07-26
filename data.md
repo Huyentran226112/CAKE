@@ -67,6 +67,7 @@ ex : #90th, #batluakhac, # 12congiap
 
 7. users => nhân viên
 - id => bigint unsigned
+- image => varchar(255) 
 - name => varchar(255)
 - address => varchar(255) -> khoa cung
 - phone => varchar(255) -> khoa cung 

@@ -18,10 +18,8 @@ return new class extends Migration
             $table->date('day_of_birth');
             $table->text('address');
             $table->text('email');
-            $table->tinyInteger('gender');
             $table->text('phone');
             $table->text('password');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
