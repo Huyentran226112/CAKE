@@ -16,7 +16,7 @@ use App\Models\ProductController;
 */
 
 Route::get('/', function () {
-    return view('admin.include.content');
+    return view('admin.include. content');
 });
 
 Route::resource('categories', CategoryController::class);
