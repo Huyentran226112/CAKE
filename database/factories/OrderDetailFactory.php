@@ -20,6 +20,7 @@ class OrderDetailFactory extends Factory
             'order_id' => fake()->numberBetween($min = 1, $max = 10),
             'product_id' => fake()->numberBetween($min = 1, $max = 10),
             'quantity' => fake()->numberBetween($min = 1, $max = 10),
+            'total' => 1000000,
         ];
     }
 }

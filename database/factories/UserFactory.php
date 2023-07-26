@@ -25,7 +25,6 @@ class UserFactory extends Factory
             'day_of_birth' => fake()->date(),
             'address' => fake()->address(),
             'phone' => fake()->phonenumber(),
-            'branch' => fake()->word(),
             'group_id' => fake()->numberBetween($min = 1, $max = 3),
         ];
     }
