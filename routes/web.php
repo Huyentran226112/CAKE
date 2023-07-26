@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource('categories', 'UserController');
+Route::resource('product',ProductController::class);
 
