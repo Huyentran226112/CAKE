@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->text('image');
             $table->string('name');
-            $table->string('slug')->nullable();
+            $table->text('description');
             $table->foreignId('category_id')->constrained('categories');
-            $table->tinyInteger('status')->default(0);
             $table->bigInteger('quantity');
+            $table->tinyInteger('status')->default(0);
             $table->bigInteger('price');
             $table->float('discount')->nullable();
             $table->integer('selled')->nullable();

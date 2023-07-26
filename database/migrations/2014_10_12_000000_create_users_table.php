@@ -23,7 +23,6 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('phone')->nullable();
             // $table->foreignId('group_id')->constrained('groups')->nullable();
-            $table->text('branch')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
