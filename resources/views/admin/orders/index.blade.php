@@ -2,11 +2,11 @@
 @section('content')
 @include('sweetalert::alert')
 <div class="page-header">
-    <h3 class="page-title">Danh sách sản phẩm</h3>
+    <h3 class="page-title">Danh sách hoá đơn</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             {{--  <li class="breadcrumb-item"><a href="{{ route('trangchu') }}">Trang chủ</a></li> --}}
-            <li class="breadcrumb-item active" aria-current="page"> Danh sách sản phẩm </li>
+            <li class="breadcrumb-item active" aria-current="page"> Danh sách hoá đơn </li>
         </ol>
     </nav>
 </div>
@@ -17,8 +17,8 @@
                 <form action="" method="get">
                     <div class="row mb-2">
                         <div class="col">
-                            {{--  @if (Auth::user()->hasPermission('Product_create'))  --}}
-                            <a href="{{ route('products.index') }}" class="btn btn-light"> Quay lại </a>
+                            {{--  @if (Auth::user()->hasPermission('Order_create'))  --}}
+                            <a href="{{ route('orders.create') }}" class="btn btn-primary"> Thêm mới </a>
                             {{--  @endif  --}}
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col">
                             <button type="submit" class="btn btn-info"> Tìm </button>
-                            <a href="{{ route('products.index') }}" type="submit" class="btn btn-secondary">Đặt
+                            <a href="{{ route('orders.index') }}" type="submit" class="btn btn-secondary">Đặt
                                 lại</a>
                         </div>
                     </div>
@@ -46,11 +46,10 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Ảnh</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Thể loại</th>
-                                <th>Số lượng</th>
-                                <th>Giá</th>
+                                <th>Mã hoá đơn</th>
+                                <th>Ảnh</th>
+                                <th>Khách hàng</th>
+                                <th>Tổng tiền</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -58,23 +57,26 @@
                             @foreach ($items as $key => $item)
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td><img class='img-thumbnail' style="width:120px; height:100px"
-                                        src="{{ asset($item->image) }}" alt=""></a></td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->category->name }}</td>
-                                <td>{{ $item->quantity }}</td>
-                                <td>{{ number_format($item->price) .' VND'}}</td>
-
-                                {{--  @if (Auth::user()->hasPermission('Product_update') || Auth::user()->hasPermission('Product_delete'))  --}}
+                                <td>{{ $item->id }}</td>
+                                <td><img class='img-thumbnail' style="width:120px; height:100px" src="{{ asset($item->customer->image) }}" alt=""></td>
+                                <td>{{ $item->customer->name }}</td>
+                                <td>{{ $item->total }}</td>
+                                {{--  @if (Auth::user()->hasPermission('Order_update') || Auth::user()->hasPermission('Order_delete'))  --}}
                                 <td>
-                                    {{--  @if (Auth::user()->hasPermission('Product_update'))  --}}
-                                    <a href="{{ route('products.restore',$item->id) }}" class="btn btn-info">Khôi phục</a>
-                                    {{--  @endif  --}}
+                                    {{--  @if (Auth::user()->hasPermission('Order_update'))  --}}
+                                    <form action="{{ route('orders.destroy', $item->id) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <a href="{{ route('orders.edit', $item->id) }}" class="btn btn-info">Sửa</a>
+                                        {{--  @endif  --}}
 
-                                    {{--  @if (Auth::user()->hasPermission('Product_update'))  --}}
-                                    <a href="{{ route('products.deleteforever',$item->id) }}" onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không?');"
-                                        class="btn btn-danger">Hủy</a>
-                                    {{--  @endif  --}}
+                                        {{--  @if (Auth::user()->hasPermission('Order_update'))  --}}
+                                        <button
+                                            onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không?');"
+                                            class="btn btn-danger">Xóa</button>
+                                        {{--  @endif  --}}
+                                        <a href="{{ route('orders.show', $item->id) }}" class="btn btn-info">Chi tiết</a>
+                                    </form>
                                 </td>
                                 {{--  @endif  --}}
                             </tr>
@@ -89,6 +91,4 @@
         </div>
     </div>
 </div>
-</div>
-
 @endsection
