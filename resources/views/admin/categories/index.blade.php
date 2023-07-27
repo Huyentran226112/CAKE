@@ -1,7 +1,7 @@
 
 @extends('admin.master')
 @section('content')
-        {{--  @include('sweetalert::alert')  --}}
+        @include('sweetalert::alert')
         <div class="page-header">
             <h3 class="page-title">Danh sách thể loại</h3>
             <nav aria-label="breadcrumb">
