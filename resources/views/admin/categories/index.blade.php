@@ -60,25 +60,18 @@
                                             <td><img
                                                 style="width:120px; height:100px" src="{{ $item->image }}"
                                                 alt=""></a></td>
-                                            {{--  @if (Auth::user()->hasPermission('Category_update') || Auth::user()->hasPermission('Category_delete'))  --}}
                                                 <td>
-                                                    {{--  @if (Auth::user()->hasPermission('Category_update'))  --}}
                                                         <form action="{{ route('categories.destroy', [$item->id]) }}"
                                                             method="post">
                                                             @method('DELETE')
                                                             @csrf
                                                             <a href="{{ route('categories.edit', $item['id']) }}"
                                                                 class="btn btn-info">Sửa</a>
-                                                    {{--  @endif  --}}
-
-                                                    {{--  @if (Auth::user()->hasPermission('Category_update'))  --}}
                                                         <button
                                                             onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không?');"
                                                             class="btn btn-danger">Xóa</button>
-                                                    {{--  @endif  --}}
                                                     </form>
                                                 </td>
-                                            {{--  @endif  --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

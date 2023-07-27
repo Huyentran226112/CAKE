@@ -20,7 +20,7 @@
                 <!-- Product -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-fire"></i>SẢN PHẨM</a>
+                        aria-expanded="false"><i class="menu-icon fa fa-fire"></i>QUẢN LÍ SẢN PHẨM</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{route('products.index')}}">Sản phẩm</a></li>
                         <li><i class="fa fa-trash-o"></i><a href="{{route('products.trash')}}">Thùng rác</a></li>
@@ -30,31 +30,30 @@
                 <!-- Customer -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-users"></i>Customer</a>
+                        aria-expanded="false"><i class="menu-icon fa fa-users"></i>QUẢN LÍ KHÁCH HÀNG </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-user"></i><a href="">Customer</a></li>
-                        <li><i class="fa fa-trash-o"></i><a href="">Trash</a></li>
+                        <li><i class="fa fa-user"></i><a href="Customers">Khách hàng</a></li>
                     </ul>
                 </li>
 
                 <!-- Order -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-shopping-cart"></i>Order</a>
+                        aria-expanded="false"><i class="menu-icon fa fa-shopping-cart"></i>QUẢN LÍ ĐƠN HÀNG</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-shopping-cart"></i><a href="">Order</a></li>
-                        <li><i class="fa fa-trash-o"></i><a href="">Order Trash</a></li>
-                        <li><i class="fa fa-trash-o"></i><a href="">OrderDetail Trash</a></li>
+                        <li><i class="fa fa-shopping-cart"></i><a href="">Đơn hàng </a></li>
+                        <li><i class="fa fa-trash-o"></i><a href="">Thùng rác</a></li>
+                        <li><i class="fa fa-tasks"></i><a href=""> Chi tiết đơn hàng</a></li>
                     </ul>
                 </li>
 
                 <!-- User -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa ti-user"></i>User</a>
+                        aria-expanded="false"><i class="menu-icon fa ti-user"></i>QUẢN LÍ NHÂN VIÊN </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-user"></i><a href="">User</a></li>
-                        <li><i class="fa fa-users"></i><a href="">Group User</a></li>
+                        <li><i class="fa fa-user"></i><a href="">Nhân viên</a></li>
+                        <li><i class="fa fa-users"></i><a href="">Nhóm nhân viên</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\ProductController;
+use App\Models\Customer;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,9 @@ Route::get('/restore-cate/{id}', [CategoryController::class, 'restore'])->name('
 // xóa vĩnh viễn
 Route::get('/force_delete/{id}', [CategoryController::class, 'force_delete'])->name('categories.force-delete');
 Route::resource('product',ProductController::class);
+
+Route::resource('Customers',CustomerController::class);
+
 // route products
 Route::group(['prefix'=>'products'],function(){
     Route::get('/trash',[ProductController::class,'trash'])->name('products.trash');
@@ -34,5 +39,4 @@ Route::group(['prefix'=>'products'],function(){
     Route::get('/deleteforever/{id}',[ProductController::class,'deleteforever'])->name('products.deleteforever');
 });
 Route::resource('products',ProductController::class);
-
 
