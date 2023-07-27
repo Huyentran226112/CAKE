@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -39,15 +41,13 @@ class CategoryController extends Controller
         if ($request->hasFile('image')) {
             $get_image = $request->file('image');
             $path = 'storage/categories/';
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $new_image = rand(1,100).$get_image->getClientOriginalName();
             $get_image->move($path, $new_image);
             $category->image = $path.$new_image;
-            $data['product_image'] = $new_image;
+
         }
         $category->save();
-        // alert()->success('Thêm', 'thành công');
+        alert()->success('Thêm', 'thành công');
 
         return redirect()->route('categories.index');
     }
@@ -81,21 +81,19 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $get_image = $request->image;
         if ($get_image) {
-            $path = 'public/assets/category/' . $category->image;
+            $path = $category->image;
             if (file_exists($path)) {
                 unlink($path);
             }
-            $path = 'public/assets/category/';
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $path = 'storage/categories/';
+            $new_image = rand(1,100).$get_image->getClientOriginalName();
             $get_image->move($path, $new_image);
-            $category->image = $new_image;
+            $category->image =  $path.$new_image;
             // dd($product)
-            $data['product_image'] = $new_image;
+            // $data['product_image'] = $new_image;
         }
         $category->save();
-        // alert()->success('sửa', 'thành công');
+        alert()->success('sửa', 'thành công');
         return redirect()->route('categories.index');
     }
 
@@ -108,5 +106,50 @@ class CategoryController extends Controller
         $Category->delete();
         // alert()->success('Sản phẩm đã được đưa vào thùng rác!');
         return redirect()->route('categories.index');
+    }
+    public function trash()
+    {
+        $softs = Category::onlyTrashed()->get();
+        return view('admin.categories.trash', compact('softs'));
+    }
+    public function restore($id)
+    {
+
+        try {
+            $softs = Category::onlyTrashed()->find($id);
+            $softs->restore();
+            alert()->success('Khôi phục sản phẩm thành công!');
+            return redirect()->route('categories.trash');
+        } catch (\exception $e) {
+            Log::error($e->getMessage());
+            toast('Có Lỗi Xảy Ra!', 'error', 'top-right');
+            return redirect()->route('categories.trash');
+      }
+    }
+    //xóa vĩnh viễn
+    public function force_delete(string $id)
+    {
+
+        try {
+            // Xoá vĩnh viễn category
+            $category = Category::withTrashed()->find($id);
+            $category->forceDelete();
+
+            // Tìm tất cả các sản phẩm đã bị xóa mà có cate_id = $id
+            $products = Product::onlyTrashed()->where('category_id', $id)->get();
+
+            // Chuyển các sản phẩm đã tìm thấy về một cate_id khác
+            foreach ($products as $product) {
+                $product->category_id = 1; // Đặt category_id mới ở đây
+                $product->save();
+            }
+
+            alert()->success('Xóa Vĩnh Viễn Thành Công!');
+            return redirect()->route('categories.trash');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            toast('Có Lỗi Xảy Ra!', 'error', 'top-right');
+            return redirect()->route('categories.trash');
+        }
     }
 }
