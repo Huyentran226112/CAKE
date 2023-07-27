@@ -2,7 +2,7 @@
 @section('content')
 {{--  @include('sweetalert::alert')  --}}
 <div class="page-header">
-    <h3 class="page-title">Thêm Mới Thể Loại</h3>
+    <h3 class="page-title">Thêm Mới Sản Phẩm</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
@@ -25,7 +25,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputName1">Tên sản phẩm</label>
+                        <label for="exampleInputName1">Tên thể loại</label>
                         <select name="category_id" class="form-control" id="">
                             <option>Chọn thể loại..</option>
                             @foreach($items as $item)
@@ -53,7 +53,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label class=" form-control-label">Description</label>
+                        <label class=" form-control-label">Mô tả</label>
                         <textarea type="text" class="is-invalid form-control" name="description"
                             id="description">{{ old('description') }}</textarea>
                         @error('description')

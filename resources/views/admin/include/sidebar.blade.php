@@ -20,33 +20,12 @@
                 <!-- Product -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-fire"></i>QUẢN LÍ SẢN PHẨM</a>
+                        aria-expanded="false"><i class="menu-icon fa fa-fire"></i>QUẢN LÍ SẢN PHẨM</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{route('products.index')}}">Sản phẩm</a></li>
                         <li><i class="fa fa-trash-o"></i><a href="{{route('products.trash')}}">Thùng rác</a></li>
                     </ul>
                 </li>
-
-                <!-- Customer -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-users"></i>QUẢN LÍ KHÁCH HÀNG </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-user"></i><a href="Customers">Khách hàng</a></li>
-                    </ul>
-                </li>
-
-                <!-- Order -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-shopping-cart"></i>QUẢN LÍ ĐƠN HÀNG</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-shopping-cart"></i><a href="">Đơn hàng </a></li>
-                        <li><i class="fa fa-trash-o"></i><a href="">Thùng rác</a></li>
-                        <li><i class="fa fa-tasks"></i><a href=""> Chi tiết đơn hàng</a></li>
-                    </ul>
-                </li>
-
                 <!-- User -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -55,6 +34,18 @@
                         <li><i class="fa fa-user"></i><a href="">Nhân viên</a></li>
                         <li><i class="fa fa-users"></i><a href="">Nhóm nhân viên</a></li>
                     </ul>
+                </li>
+
+                <!-- Customer -->
+                <li class="menu-item">
+                    <a href="{{route('orders.index')}}"><i class="menu-icon fa fa-shopping-cart"></i>QUẢN LÍ ĐƠN
+                        HÀNG</a>
+                </li>
+
+                <!-- Customer -->
+                <li class="menu-item">
+                    <a href=""><i class="menu-icon fa fa-users"></i>QUẢN LÍ KHÁCH HÀNG</a>
+
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

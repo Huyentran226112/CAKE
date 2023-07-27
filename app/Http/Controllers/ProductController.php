@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -12,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Product::with('category')->orderBy('id', 'ASC')->paginate(5);
+        $items = Product::with('category')->orderBy('id', 'DESC')->paginate(5);
         $param = [
             'items' => $items,
         ];
@@ -34,7 +35,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $product = new Product();
         $product->name = $request->name;
@@ -51,7 +52,7 @@ class ProductController extends Controller
             $product->image = $path.$new_name_img;
         }
         $product->save();
-        alert()->success('Created Success');
+        alert()->success('Thêm','Thành công');
         return redirect()->route('products.index');
     }
 
@@ -68,10 +69,11 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $items = Category::get();
+        $categories = Category::get();
+        $product = Product::with('category')->find($id);
         $param = [
-            'id' => $id,
-            'items' => $items
+            'categories' => $categories,
+            'product' => $product,
         ];
         return view('admin.products.edit',$param);
     }
@@ -79,7 +81,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProductRequest $request, string $id)
     {
        dd($request);
         $product = Product::find($id);
@@ -101,7 +103,7 @@ class ProductController extends Controller
             $product->image = $path.$new_name_img;
         }
         $product->save();
-        alert()->success('Updated Success');
+        alert()->success('Cập nhập','Thành công');
         return redirect()->route('products.index');
     }
 
@@ -113,10 +115,10 @@ class ProductController extends Controller
         $item = Product::find($id);
         $item->delete();
         alert()->success('Sản phẩm đã được đưa vào thùng rác!');
-        return redirect()->route('products.index');
+        return back();
     }
     function trash(){
-        $items = Product::with('category')->onlyTrashed()->orderBy('id', 'ASC')->paginate(5);
+        $items = Product::with('category')->onlyTrashed()->orderBy('id', 'DESC')->paginate(5);
         return view('admin.products.trash',compact('items'));
     }
     function restore(String $id){
