@@ -9,7 +9,7 @@
     <title>Manager</title>
     <meta name="description" content="Manager">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 

@@ -89,8 +89,6 @@ class CategoryController extends Controller
             $new_image = rand(1,100).$get_image->getClientOriginalName();
             $get_image->move($path, $new_image);
             $category->image =  $path.$new_image;
-            // dd($product)
-            // $data['product_image'] = $new_image;
         }
         $category->save();
         alert()->success('sửa', 'thành công');
@@ -104,7 +102,7 @@ class CategoryController extends Controller
     {
         $Category = Category::find($id);
         $Category->delete();
-        // alert()->success('Sản phẩm đã được đưa vào thùng rác!');
+        alert()->success('Sản phẩm đã được đưa vào thùng rác!');
         return redirect()->route('categories.index');
     }
     public function trash()

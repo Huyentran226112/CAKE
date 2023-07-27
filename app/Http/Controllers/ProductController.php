@@ -39,9 +39,9 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->name = $request->name;
-        $product->category_id = $request->category_id; 
-        $product->quantity = $request->quantity; 
-        $product->price = $request->price; 
+        $product->category_id = $request->category_id;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
         $product->description = $request->description;
         $fieldName = 'image';
         if ($request->hasFile($fieldName)) {
@@ -49,7 +49,7 @@ class ProductController extends Controller
             $path = 'storage/products/';
             $new_name_img = rand(1,100).$get_img->getClientOriginalName();
             $get_img->move($path,$new_name_img);
-            $product->image = $path.$new_name_img; 
+            $product->image = $path.$new_name_img;
         }
         $product->save();
         alert()->success('Thêm','Thành công');
@@ -83,11 +83,12 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, string $id)
     {
+       dd($request);
         $product = Product::find($id);
         $product->name = $request->name;
-        $product->category_id = $request->category_id; 
-        $product->quantity = $request->quantity; 
-        $product->price = $request->price; 
+        $product->category_id = $request->category_id;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
         $product->description = $request->description;
         $fieldName = 'image';
         if ($request->hasFile($fieldName)) {
@@ -99,7 +100,7 @@ class ProductController extends Controller
             $get_img = $request->file($fieldName);
             $new_name_img = rand(1,100).$get_img->getClientOriginalName();
             $get_img->move($path,$new_name_img);
-            $product->image = $path.$new_name_img; 
+            $product->image = $path.$new_name_img;
         }
         $product->save();
         alert()->success('Cập nhập','Thành công');

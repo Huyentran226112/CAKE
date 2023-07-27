@@ -26,14 +26,13 @@
                         <li><i class="fa fa-trash-o"></i><a href="{{route('products.trash')}}">Thùng rác</a></li>
                     </ul>
                 </li>
-
                 <!-- User -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa ti-user"></i>QUẢN LÍ NHÂN VIÊN</a>
+                        aria-expanded="false"><i class="menu-icon fa ti-user"></i>QUẢN LÍ NHÂN VIÊN </a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-user"></i><a href="">Nhân viên</a></li>
-                        <li><i class="fa fa-users"></i><a href="">Nhóm nhân viên</a></li>
+                        <li><i class="fa fa-users"></i><a href="">Nhóm nhân viên</a></li>
                     </ul>
                 </li>
 
@@ -45,8 +44,8 @@
 
                 <!-- Customer -->
                 <li class="menu-item">
-                    <a href=""><i class="menu-icon fa fa-users"></i>QUẢN LÍ KHÁCH
-                        HÀNG</a>
+                    <a href=""><i class="menu-icon fa fa-users"></i>QUẢN LÍ KHÁCH HÀNG</a>
+
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
