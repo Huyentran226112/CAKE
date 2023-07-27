@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Models\ProductController;
+use  App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,13 @@ Route::get('/trash', [CategoryController::class,'trash'])->name('categories.tras
 Route::get('/restore-cate/{id}', [CategoryController::class, 'restore'])->name('cate.restore');
 // xóa vĩnh viễn
 Route::get('/force_delete/{id}', [CategoryController::class, 'force_delete'])->name('categories.force-delete');
-
 Route::resource('product',ProductController::class);
+// route products
+Route::group(['prefix'=>'products'],function(){
+    Route::get('/trash',[ProductController::class,'trash'])->name('products.trash');
+    Route::get('/restore/{id}',[ProductController::class,'restore'])->name('products.restore');
+    Route::get('/deleteforever/{id}',[ProductController::class,'deleteforever'])->name('products.deleteforever');
+});
+Route::resource('products',ProductController::class);
+
 

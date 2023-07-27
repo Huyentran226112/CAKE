@@ -20,10 +20,10 @@
                 <!-- Product -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="menu-icon fa fa-fire"></i>Product</a>
+                        aria-expanded="false"><i class="menu-icon fa fa-fire"></i>SẢN PHẨM</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-puzzle-piece"></i><a href="">Product</a></li>
-                        <li><i class="fa fa-trash-o"></i><a href="">Trash</a></li>
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('products.index')}}">Sản phẩm</a></li>
+                        <li><i class="fa fa-trash-o"></i><a href="{{route('products.trash')}}">Thùng rác</a></li>
                     </ul>
                 </li>
 
