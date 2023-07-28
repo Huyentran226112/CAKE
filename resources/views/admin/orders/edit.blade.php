@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Ghi chú</label>
-                            <textarea name="note" id="description">{{ old('note') }}</textarea>
+                            <textarea name="note">{{ $item->note }}</textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-info" value="Cập nhật" >

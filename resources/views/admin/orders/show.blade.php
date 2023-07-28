@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+@include('sweetalert::alert')
 <div class="page-header">
     <h3 class="page-title">Chi tiết hoá đơn</h3>
     <nav aria-label="breadcrumb">
@@ -17,7 +18,10 @@
                     <div class="row mb-2">
                         <div class="col">
                             {{--  @if (Auth::user()->hasPermission('Orderdetail_create'))  --}}
-                            <a href="{{ route('orderdetail.create') }}" class="btn btn-primary"> Thêm mới </a>
+                            <a href="{{ route('orderdetail.create',$order->id) }}" class="btn btn-primary"> Thêm mới
+                            </a>
+                            <a href="{{ route('orders.index') }}" class="btn btn-light"> Quay lại
+                            </a>
                             {{--  @endif  --}}
                         </div>
                     </div>
@@ -33,7 +37,7 @@
                         </div>
                         <div class="col">
                             <button type="submit" class="btn btn-info"> Tìm </button>
-                            <a href="{{ route('orderdetail.index') }}" type="submit" class="btn btn-secondary">Đặt
+                            <a href="{{ route('orders.show',$order->id) }}" type="submit" class="btn btn-secondary">Đặt
                                 lại</a>
                         </div>
                     </div>
@@ -44,19 +48,45 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>{{$items->id}} : {{$items->customer->name}}</th>
+                                <th colspan="6">Mã hóa đơn : {{$order->id}}</br>Ghi chú: {{$order->note}}</th>
                             </tr>
-                            <thead>
-                            <tbody>
-                                @foreach ($items->orderdetail as $key => $item)
-                                <tr>
-                                    <td>{{$item->product->name}}</td>
-                                    <td>{{$item->quantity}}</td>
-                                    <td>{{$item->price}}</td>
-                                    <td>{{$item->discount}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Giá tiền</th>
+                                <th>Giảm giá</th>
+                                <th>Tổng tiền</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($details as $detail)
+                            <tr>
+                                <td>{{$detail->product->name}}</td>
+                                <td>{{$detail->quantity}}</td>
+                                <td>{{ number_format($detail->product->price) .' VND' }}</td>
+
+                                <td>{{number_format($detail->total) .' %'}}</td>
+                                <td>{{ number_format($detail->total) .' VND' }}</td>
+                                <td>
+                                    {{--  @if (Auth::user()->hasPermission('Orderdetail_update'))  --}}
+                                    <form action="{{ route('orderdetail.destroy', $detail->id) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <a href="{{ route('orderdetail.edit', $detail->id) }}"
+                                            class="btn btn-info">Sửa</a>
+                                        {{--  @endif  --}}
+
+                                        {{--  @if (Auth::user()->hasPermission('Orderdetail_update'))  --}}
+                                        <button
+                                            onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không?');"
+                                            class="btn btn-danger">Xóa</button>
+                                        {{--  @endif  --}}
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>

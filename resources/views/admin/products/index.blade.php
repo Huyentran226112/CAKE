@@ -51,6 +51,7 @@
                                 <th>Thể loại</th>
                                 <th>Số lượng</th>
                                 <th>Giá</th>
+                                <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -64,7 +65,13 @@
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->quantity }}</td>
                                 <td>{{ number_format($item->price) .' VND'}}</td>
-
+                                <td>
+                                    @if($item->status == 0)
+                                    Chưa kích hoạt
+                                    @elseif($item->status == 1)
+                                    Kích hoạt
+                                    @endif
+                                </td>
                                 {{--  @if (Auth::user()->hasPermission('Product_update') || Auth::user()->hasPermission('Product_delete'))  --}}
                                 <td>
                                     {{--  @if (Auth::user()->hasPermission('Product_update'))  --}}

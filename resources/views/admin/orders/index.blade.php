@@ -45,7 +45,6 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>STT</th>
                                 <th>Mã hoá đơn</th>
                                 <th>Ảnh</th>
                                 <th>Khách hàng</th>
@@ -56,11 +55,10 @@
                         <tbody>
                             @foreach ($items as $key => $item)
                             <tr>
-                                <td>{{ ++$key }}</td>
                                 <td>{{ $item->id }}</td>
                                 <td><img class='img-thumbnail' style="width:120px; height:100px" src="{{ asset($item->customer->image) }}" alt=""></td>
                                 <td>{{ $item->customer->name }}</td>
-                                <td>{{ $item->total }}</td>
+                                <td>{{ number_format($item->total) .' VND' }}</td>
                                 {{--  @if (Auth::user()->hasPermission('Order_update') || Auth::user()->hasPermission('Order_delete'))  --}}
                                 <td>
                                     {{--  @if (Auth::user()->hasPermission('Order_update'))  --}}

@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Product::with('category')->orderBy('id', 'DESC')->paginate(5);
+        $items = Product::with('category')->orderBy('id', 'DESC')->paginate(3);
         $param = [
             'items' => $items,
         ];
@@ -43,6 +43,7 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->price = $request->price;
         $product->description = $request->description;
+        $product->status = $request->status;
         $fieldName = 'image';
         if ($request->hasFile($fieldName)) {
             $get_img = $request->file($fieldName);
@@ -83,13 +84,13 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, string $id)
     {
-       dd($request);
         $product = Product::find($id);
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->quantity = $request->quantity;
         $product->price = $request->price;
         $product->description = $request->description;
+        $product->status = $request->status;
         $fieldName = 'image';
         if ($request->hasFile($fieldName)) {
             $path = $product->image;

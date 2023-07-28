@@ -28,7 +28,6 @@ Route::get('/trash', [CategoryController::class,'trash'])->name('categories.tras
 Route::get('/restore-cate/{id}', [CategoryController::class, 'restore'])->name('cate.restore');
 // xóa vĩnh viễn
 Route::get('/force_delete/{id}', [CategoryController::class, 'force_delete'])->name('categories.force-delete');
-Route::resource('product',ProductController::class);
 
 Route::resource('Customers',CustomerController::class);
 
@@ -41,17 +40,14 @@ Route::group(['prefix'=>'products'],function(){
 Route::resource('products',ProductController::class);
 
 // route orders
-Route::group(['prefix'=>'orders'],function(){
-    Route::get('/trash',[OrderController::class,'trash'])->name('orders.trash');
-    Route::get('/restore/{id}',[OrderController::class,'restore'])->name('orders.restore');
-    Route::get('/deleteforever/{id}',[OrderController::class,'deleteforever'])->name('orders.deleteforever');
-});
 Route::resource('orders',OrderController::class);
 
+// route orderdetail
 Route::group(['prefix'=>'orderdetail'],function(){
-    Route::get('/trash',[OrderDetailController::class,'trash'])->name('orderdetail.trash');
-    Route::get('/restore/{id}',[OrderDetailController::class,'restore'])->name('orderdetail.restore');
-    Route::get('/deleteforever/{id}',[OrderDetailController::class,'deleteforever'])->name('orderdetail.deleteforever');
+    Route::get('/create/{order_id}', [OrderDetailController::class, 'create'])->name('orderdetail.create');
+    Route::post('/store', [OrderDetailController::class, 'store'])->name('orderdetail.store');
+    Route::get('/edit/{id}', [OrderDetailController::class, 'edit'])->name('orderdetail.edit');
+    Route::put('/update/{id}', [OrderDetailController::class, 'update'])->name('orderdetail.update');
+    Route::delete('/destroy/{id}', [OrderDetailController::class, 'destroy'])->name('orderdetail.destroy');
 });
-Route::resource('orderdetail',OrderDetailController::class);
 

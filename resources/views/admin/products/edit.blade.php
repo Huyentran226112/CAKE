@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-{{--  @include('sweetalert::alert')  --}}
+@include('sweetalert::alert')
 <div class="page-header">
     <h3 class="page-title">Chỉnh sửa Thể Loại</h3>
     <nav aria-label="breadcrumb">
@@ -26,9 +26,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputName1">Tên sản phẩm</label>
+                        <label for="exampleInputName1">Chọn thể loại</label>
                         <select name="category_id" class="form-control" id="">
-                            <option value="{{$product->id}}">{{$product->category->id}} : {{$product->category->name}}</option>
+                            <option value="{{$product->category->id}}">{{$product->category->id}} : {{$product->category->name}}</option>
                             @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->id}} : {{$category->name}}</option>
                             @endforeach
@@ -51,6 +51,16 @@
                             value="{{ $product->price }}">
                         @error('price')
                         <p class="text text-danger ">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Trạng thái</label>
+                        <select name="status" class="is-invalid form-control">
+                            <option value="0">Chưa kích hoạt</option>
+                            <option value="1">Kích hoạt</option>
+                        </select>
+                        @error('status')
+                        <p class="text text-danger  form-control ">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">

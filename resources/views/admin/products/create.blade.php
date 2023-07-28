@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('content')
-{{--  @include('sweetalert::alert')  --}}
+@section('content') 
+@include('sweetalert::alert')
 <div class="page-header">
     <h3 class="page-title">Thêm Mới Sản Phẩm</h3>
     <nav aria-label="breadcrumb">
@@ -21,7 +21,7 @@
                         <input name="name" type="text" class="form-control" placeholder="Nhập tên "
                             value="{{ old('name') }}">
                         @error('name')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger  form-control">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -33,7 +33,7 @@
                             @endforeach
                         </select>
                         @error('category_id')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger  form-control ">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -41,7 +41,7 @@
                         <input name="quantity" type="number" class="form-control" placeholder="Nhập số lượng "
                             value="{{ old('quantity') }}">
                         @error('quantity')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger  form-control ">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -49,7 +49,18 @@
                         <input name="price" type="number" class="form-control" placeholder="Nhập giá tiền "
                             value="{{ old('price') }}">
                         @error('price')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger  form-control ">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Trạng thái</label>
+                        <select name="status" class="is-invalid form-control">
+                            <option>Chọn trạng thái..</option>
+                            <option value="0">Chưa kích hoạt</option>
+                            <option value="1">Kích hoạt</option>
+                        </select>
+                        @error('status')
+                        <p class="text text-danger  form-control ">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -64,7 +75,7 @@
                         <label>Ảnh</label>
                         <input type="file" name="image" class="control" value="{{ old('image') }}">
                         @error('image')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger  form-control ">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="d-grid">
