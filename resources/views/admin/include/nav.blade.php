@@ -1,4 +1,4 @@
-<header id="header" class="header">
+<header id="header" class="header" >
     <div class="top-left">
         <div class="navbar-header">
             <a class="navbar-brand" href="./"><img src="{{ asset('admin/images/logo.png') }}" alt="Logo"></a>

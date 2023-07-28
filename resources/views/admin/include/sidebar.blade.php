@@ -3,10 +3,10 @@
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
+                <li class="menu-title">UI elements</li><!-- /.menu-title -->
                 <!-- <li>
                     <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li> -->
-                <li class="menu-title">UI elements</li><!-- /.menu-title -->
                 <!-- Category -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"

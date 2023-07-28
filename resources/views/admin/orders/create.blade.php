@@ -1,6 +1,11 @@
 @extends('admin.master')
 @section('content')
-{{--  @include('sweetalert::alert')  --}}
+@include('sweetalert::alert')
+<script>
+var products = @json($products -> keyBy('id') -> map(function($product) {
+    return ['quantity' => $product -> quantity, 'max_quantity' => $product -> max_quantity];
+}));
+</script>
 <div class="page-header">
     <h3 class="page-title">Thêm Mới Thể Loại</h3>
     <nav aria-label="breadcrumb">
@@ -20,8 +25,8 @@
                         <label for="exampleInputName1">Tên khách hàng</label>
                         <select name="customer_id" class="form-control" id="">
                             <option>Chọn khách hàng..</option>
-                            @foreach($items as $item)
-                            <option value="{{$item->id}}">{{ $item->id }} : {{$item->name}}</option>
+                            @foreach($customers as $customer)
+                            <option value="{{$customer->id}}">{{ $customer->id }} : {{$customer->name}}</option>
                             @endforeach
                         </select>
                         @error('customer_id')
@@ -29,8 +34,29 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label>Sản phẩm</label>
+                        <select name='product_id' class="form-control" id="product-select">
+                            <option>Chọn sản phẩm..</option>
+                            @foreach($products as $product)
+                            @if($product->quantity>0 && $product->status==1)
+                            <option value="{{ $product->id }}">{{ $product->id }} : {{ $product->name }}</option>
+                            @endif
+                            @endforeach
+                        </select>
+                        @error('product_id')
+                        <p class="text text-danger ">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Số lượng</label>
+                        <input type="number" name="quantity" class="form-control quantity" min="1" max="" />
+                        @error('quantity')
+                        <p class="text text-danger ">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label>Note</label>
-                        <textarea name="note" id="description"></textarea>
+                        <textarea name="note" class="form-control"></textarea>
                         @error('note')
                         <p class="text text-danger ">{{ $message }}</p>
                         @enderror
@@ -44,4 +70,19 @@
         </div>
     </div>
 </div>
+<script>
+// Lắng nghe sự kiện khi select được thay đổi
+// Lắng nghe sự kiện khi input quantity thay đổi
+document.querySelector('.quantity').addEventListener('input', function() {
+    var productName = document.getElementById('product-select').value;
+    var product = products[productName];
+    if (product) {
+        var maxQuantity = parseInt(product.quantity);
+        var quantity = parseInt(this.value);
+        if (!isNaN(quantity) && quantity > maxQuantity) {
+            this.value = maxQuantity;
+        }
+    }
+});
+</script>
 @endsection
