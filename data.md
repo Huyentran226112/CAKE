@@ -1,4 +1,5 @@
 # Dự án CAKE
+
 <-- FONT END -->
 ## Dành cho người dùng 
 - Hiển thị danh sách loại bánh 
@@ -8,6 +9,7 @@
 <!-- - Thay đổi thông cá nhân -->
 - Mua hàng
 - Giỏ hàng
+
 <-- BACK END -->
 
 1. hagtags => từ khóa liên quan
@@ -95,3 +97,11 @@ ex : #90th, #batluakhac, # 12congiap
 - group_id => bigint unsigned
 - role_id => bigint unsigned
 
+# library
+sweet-alert
+excel 
+
+# Additional
+
+29/07 : add column status in order table
+- vẫn sửa thao tác được nếu thay dữ liệu trong input

@@ -35,41 +35,43 @@
                                 <a href="{{ route('customers.index') }}" type="submit" class="btn btn-secondary">Đặt
                                     lại</a>
                             </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Tên khách hàng </th>
-                                    <th>Email</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Số điện thoại </th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($items as $key => $item)
-                                    <tr>
-                                        <td>{{ ++$key }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->address}}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->phone }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        </div>
                     </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên khách hàng </th>
+                                <th>Email</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($items as $key => $item)
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->address}}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                <div class="pagination">
-                    {{ $items->appends(request()->query())->links('pagination::bootstrap-4') }}
-                </div>
+            </div>
+            <div class="pagination">
+                {{ $items->appends(request()->query())->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>
-    </div>
+</div>
+</div>
 @endsection

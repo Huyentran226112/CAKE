@@ -27,6 +27,9 @@
 <script src="{{ asset('admin/assets/js/lib/data-table/buttons.print.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/lib/data-table/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/init/datatables-init.js') }}"></script>
+<!-- <script src="{{ asset('jquery-3.2.0.min.js') }}"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('admin/assets/js/lib/chosen/chosen.jquery.min.js') }}"></script>
 
 <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 <script>

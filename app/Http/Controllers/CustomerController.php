@@ -59,7 +59,8 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = Customer::find($id);
+        return view('admin.customers.show',compact('item'));
     }
 
     /**
