@@ -116,7 +116,10 @@ class OrderController extends Controller
             //code...
             $item = Order::with('customer')->find($id);
             // $this->authorize('update',$order);
-            return view('admin.orders.edit',compact(['item']));
+            if ($item->status == 0) {
+                return view('admin.orders.edit',compact(['item']));
+            }
+            return back();
         } catch (\Exception $e) {
             alert()->warning('Bạn không có quyền truy cập');
             return back();
@@ -137,6 +140,7 @@ class OrderController extends Controller
             $total += $detail->total;
         }
         $order->total = $total;
+        $order->status = $request->status;
         $order->updated_at = Carbon::now();
         $order->save();
         alert()->success('Cập nhập hóa đơn','Thành công');
@@ -147,10 +151,13 @@ class OrderController extends Controller
     {
         try {
             //code...
-            $order = Order::find($id);
-            // $this->authorize('delete',$order);
-            $order->delete();
-            alert()->success('Xóa đơn hàng thành công');
+            $item = Order::find($id);
+            // $this->authorize('delete',$item);
+            if ($item->status ==0) {
+                # code...
+                $item->delete();
+                alert()->success('Xóa đơn hàng thành công');
+            }
             return back();
         } catch (\Exception $e) {
             alert()->warning('Bạn không có quyền truy cập');

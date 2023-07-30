@@ -28,7 +28,14 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Ghi chú</label>
-                            <textarea name="note">{{ $item->note }}</textarea>
+                            <textarea name="note" class="form-control">{{ $item->note }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Trạng thái</label>
+                            <select name="status" class="form-control">
+                                <option value="0">Chưa hoàn thành</option>
+                                <option value="1">Hoàn thành</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-info" value="Cập nhật" >

@@ -32,14 +32,14 @@ var products = @json($products -> keyBy('id') -> map(function($product) {
                             @endforeach
                         </select>
                         @error('product_id')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger form-control">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label class="form-label">Số lượng</label>
                         <input type="number" name="quantity" class="form-control quantity" min="1" max="" />
                         @error('quantity')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger form-control ">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="d-grid">

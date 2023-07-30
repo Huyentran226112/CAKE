@@ -27,8 +27,7 @@
                         </div>
                         <div class="col">
                             <button type="submit" class="btn btn-info"> Tìm </button>
-                            <a href="{{ route('categories.index') }}" type="submit" class="btn btn-secondary">Đặt
-                                lại</a>
+                            <a href="{{ route('orders.index') }}" type="submit" class="btn btn-secondary">Quay lại</a>
                         </div>
                     </div>
                 </form>
@@ -47,21 +46,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($items as $key => $item)
                             <tr>
-                                <td>{{ ++$key }}</td>
+                                <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->address}}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
                             </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="pagination">
-                {{ $items->appends(request()->query())->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

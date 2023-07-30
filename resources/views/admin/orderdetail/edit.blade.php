@@ -2,8 +2,8 @@
 @section('content')
 @include('sweetalert::alert')
 <script>
-var products = @json($products - > keyBy('id') - > map(function($product) {
-    return ['quantity' => $product - > quantity, 'max_quantity' => $product - > max_quantity];
+var products = @json($products -> keyBy('id') -> map(function($product) {
+    return ['quantity' => $product -> quantity, 'max_quantity' => $product -> max_quantity];
 }));
 </script>
 <div class="page-header">
@@ -36,14 +36,14 @@ var products = @json($products - > keyBy('id') - > map(function($product) {
                             @endforeach
                         </select>
                         @error('product_id')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger form-control">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label class="form-label">Số lượng</label>
                         <input type="number" name="quantity" class="form-control quantity" min="1" max="" />
                         @error('quantity')
-                        <p class="text text-danger ">{{ $message }}</p>
+                        <p class="text text-danger form-control">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="d-grid">
