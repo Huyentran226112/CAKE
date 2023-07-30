@@ -30,7 +30,7 @@ Route::get('/restore-cate/{id}', [CategoryController::class, 'restore'])->name('
 Route::get('/force_delete/{id}', [CategoryController::class, 'force_delete'])->name('categories.force-delete');
 Route::resource('product',ProductController::class);
 
-Route::resource('Customers',CustomerController::class);
+Route::resource('customers',CustomerController::class);
 
 // route products
 Route::group(['prefix'=>'products'],function(){

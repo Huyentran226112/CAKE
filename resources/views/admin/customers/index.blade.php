@@ -17,7 +17,7 @@
                     <form action="" method="get">
                         <div class="row mb-2">
                             <div class="col">
-                                <a href="{{ route('Customers.create') }}" class="btn btn-primary"> Thêm mới </a>
+                                <a href="{{ route('customers.create') }}" class="btn btn-primary"> Thêm mới </a>
                             </div>
                         </div>
 
@@ -32,7 +32,7 @@
                             </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-info"> Tìm </button>
-                                <a href="{{ route('categories.index') }}" type="submit" class="btn btn-secondary">Đặt
+                                <a href="{{ route('customers.index') }}" type="submit" class="btn btn-secondary">Đặt
                                     lại</a>
                             </div>
                         </div>

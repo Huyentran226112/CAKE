@@ -44,7 +44,7 @@
 
                 <!-- Customer -->
                 <li class="menu-item">
-                    <a href=""><i class="menu-icon fa fa-users"></i>QUẢN LÍ KHÁCH HÀNG</a>
+                    <a href="/customers"><i class="menu-icon fa fa-users"></i>QUẢN LÍ KHÁCH HÀNG</a>
 
                 </li>
             </ul>
