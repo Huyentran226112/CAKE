@@ -56,7 +56,9 @@
                                 <th>Giá tiền</th>
                                 <th>Giảm giá</th>
                                 <th>Tổng tiền</th>
+                                @if($order->status == 0)
                                 <th>Hành động</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -66,8 +68,9 @@
                                 <td>{{$detail->quantity}}</td>
                                 <td>{{ number_format($detail->product->price) .' VND' }}</td>
 
-                                <td>{{number_format($detail->total) .' %'}}</td>
+                                <td>{{number_format($detail->discount) .' %'}}</td>
                                 <td>{{ number_format($detail->total) .' VND' }}</td>
+                                @if($order->status == 0)
                                 <td>
                                     {{--  @if (Auth::user()->hasPermission('Orderdetail_update'))  --}}
                                     <form action="{{ route('orderdetail.destroy', $detail->id) }}" method="post">
@@ -84,6 +87,7 @@
                                         {{--  @endif  --}}
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

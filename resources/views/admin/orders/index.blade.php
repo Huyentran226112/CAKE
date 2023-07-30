@@ -48,6 +48,7 @@
                                 <th>Mã hoá đơn</th>
                                 <th>Ảnh</th>
                                 <th>Khách hàng</th>
+                                <th>Trạng thái</th>
                                 <th>Tổng tiền</th>
                                 <th>Hành động</th>
                             </tr>
@@ -57,7 +58,18 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td><img class='img-thumbnail' style="width:120px; height:100px" src="{{ asset($item->customer->image) }}" alt=""></td>
-                                <td>{{ $item->customer->name }}</td>
+                                <td>
+                                    <div onclick="window.location.href='{{ route('customers.show',$item->customer_id) }}';">
+                                        {{ $item->customer->name }}
+                                    </div>
+                                </td>
+                                <td>
+                                    @if($item->status == 0)
+                                    <span class="btn btn-light">Chưa hoàn thành</span>
+                                    @elseif($item->status == 1) 
+                                    <span class="btn btn-success">Hoàn thành</span>
+                                    @endif
+                                </td>
                                 <td>{{ number_format($item->total) .' VND' }}</td>
                                 {{--  @if (Auth::user()->hasPermission('Order_update') || Auth::user()->hasPermission('Order_delete'))  --}}
                                 <td>
@@ -65,13 +77,17 @@
                                     <form action="{{ route('orders.destroy', $item->id) }}" method="post">
                                         @method('DELETE')
                                         @csrf
+                                        @if ( $item->status == 0)
                                         <a href="{{ route('orders.edit', $item->id) }}" class="btn btn-info">Sửa</a>
+                                        @endif
                                         {{--  @endif  --}}
 
-                                        {{--  @if (Auth::user()->hasPermission('Order_update'))  --}}
+                                        {{--  @if (Auth::user()->hasPermission('Order_delete'))  --}}
+                                        @if ( $item->status == 0)
                                         <button
                                             onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không?');"
                                             class="btn btn-danger">Xóa</button>
+                                        @endif
                                         {{--  @endif  --}}
                                         <a href="{{ route('orders.show', $item->id) }}" class="btn btn-info">Chi tiết</a>
                                     </form>

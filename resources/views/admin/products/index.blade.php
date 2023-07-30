@@ -67,9 +67,9 @@
                                 <td>{{ number_format($item->price) .' VND'}}</td>
                                 <td>
                                     @if($item->status == 0)
-                                    Chưa kích hoạt
-                                    @elseif($item->status == 1)
-                                    Kích hoạt
+                                    <span class="btn btn-light">Chưa kích hoạt</span>
+                                    @elseif($item->status == 1) 
+                                    <span class="btn btn-success">Kích hoạt</span>
                                     @endif
                                 </td>
                                 {{--  @if (Auth::user()->hasPermission('Product_update') || Auth::user()->hasPermission('Product_delete'))  --}}

@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('content') 
+@section('content')
 @include('sweetalert::alert')
 <div class="page-header">
     <h3 class="page-title">Thêm Mới Sản Phẩm</h3>
@@ -26,7 +26,8 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputName1">Tên thể loại</label>
-                        <select name="category_id" class="form-control" id="">
+                        <select name="category_id" class="form-control">
+                        <!-- multiple class="standardSelect" -->
                             <option>Chọn thể loại..</option>
                             @foreach($items as $item)
                             <option value="{{$item->id}}">{{$item->id}} : {{$item->name}}</option>
@@ -87,4 +88,14 @@
         </div>
     </div>
 </div>
+<script>
+    jQuery(document).ready(function() {
+        jQuery(".standardSelect").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "Oops, nothing found!",
+            width: "100%"
+        });
+    });
+</script>
+
 @endsection

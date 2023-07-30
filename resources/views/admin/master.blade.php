@@ -1,5 +1,5 @@
 @include('admin.include.header')
-<body>
+<body class="open">
     <!-- Left Panel -->
     @include('admin.include.sidebar')
     <!-- /#left-panel -->

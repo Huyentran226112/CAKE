@@ -22,7 +22,13 @@ class UpdateOrderDetailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'note' => 'required', 
+            'quantity' => 'required|numeric',
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'quantity.required' => 'Yêu cầu thêm số lượng',
         ];
     }
 }

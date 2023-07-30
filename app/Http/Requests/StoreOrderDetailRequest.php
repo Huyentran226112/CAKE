@@ -22,8 +22,17 @@ class StoreOrderDetailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'image' => 'required',
+            'product_id' => 'required|numeric',
+            'quantity' => 'required',
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'product_id.required' => 'Yêu cầu chọn sản phẩm',
+            'product_id.numeric' => 'Yêu cầu chọn sản phẩm',
+            'quantity.required' => 'Yêu cầu thêm số lượng',
+            'quantity.numeric' => 'Số lượng là kiểu số',
         ];
     }
 }
